@@ -5,7 +5,6 @@
 let express = require('express');
 let HelloWorld = require('../components/HelloWorld');
 let server = express();
-let path = require('path');
 const PORT = 3000;
 
 
