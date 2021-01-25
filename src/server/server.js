@@ -7,9 +7,12 @@ let HelloWorld = require('../components/HelloWorld');
 let server = express();
 const PORT = 3000;
 
-
+/**
+ * making the public folder as the static asset serving folder.
+ * this will be used by the application to serve images, css, js or 
+ * any other static asset.
+ */
 server.use(express.static('public'));
-server.use(express.static('public/assets'));
 
 /**
  * for the request at the home page location 
