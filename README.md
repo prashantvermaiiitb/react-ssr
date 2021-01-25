@@ -13,7 +13,10 @@ This project will have separate branches that will be denoting the different sta
       1. > to create the bundle for the server JS and this will be used for running the server. 
       2. > Here we have to create webpack.config.js and use it for this purpose.
       3. > Internal & External Node modules are being excluded using special settings, for this webpack-node-externals have been used along with 'target:node' in webpack.config.js
+      4. > for detecting the changes in the File and automatically re-bundle JS using 'watch' mode options as true : https://webpack.js.org/configuration/watch/
 
-   3. **Continuous Update & Re-run** : Using nodemon for detecting the changes in the File and restarting the server again rather than doing that manually. Till this time we do not have this integration, server has to be restarted again & again for loading the changes on the UI.
+   3. **Continuous Update & Re-run** : Using nodemon 
+      1. For restarting the server again rather than doing that manually. 
+      2. Till the time we do not have this integration, manual server re-start is needed for loading the changes on the UI.
 
 2.  
