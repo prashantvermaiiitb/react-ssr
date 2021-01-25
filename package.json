@@ -4,7 +4,10 @@
   "description": "Server side rendering using React, React  Router, Express, Node",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "npx webpack --mode=production",
+    "dev": "npx webpack --mode=development",
+    "server":"node ./dist/server.min.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +21,9 @@
   },
   "homepage": "https://github.com/prashantvermaiiitb/react-ssr#readme",
   "devDependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "webpack": "^5.17.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-node-externals": "^2.5.2"
   }
 }
