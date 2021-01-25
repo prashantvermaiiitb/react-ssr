@@ -2,16 +2,22 @@
  * simple server @Port 3000 to serve 'hello world'
  */
 
-let app = require('express');
-let server = app();
+let express = require('express');
+let HelloWorld = require('../components/HelloWorld');
+let server = express();
+let path = require('path');
 const PORT = 3000;
+
+
+server.use(express.static('public'));
+server.use(express.static('public/assets'));
 
 /**
  * for the request at the home page location 
  * serve the "hello world"
  */
 server.get('/', function (request, response) {
-    let html = `<html><head><title>hello world</title></head><body><h1>hello world!!</h1></body></html>`;
+    let html = HelloWorld();
     response.send(html);
 });
 
