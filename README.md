@@ -22,8 +22,10 @@ This project will have separate branches that will be denoting the different sta
 2.  Running the Project :-
 
     1.  Open 2 Terminals as below :-
-        1.  > Run **npm run dev** for running the webpack in the watch mode, This will run the webpack in the dev mode with watch flag where it will create **bundle** again if there are changes in any of the files that it's watching (check the webpack.config.js) for this. 
+        1.  > Run **npm install** for installing the dependencies.
         
-        2.  > Run **npm run dev** for running the webpack in the watch mode 
+        2.  > Run **npm run dev** for running the webpack in the watch mode, This will run the webpack in the dev mode with watch flag where it will create **bundle** again if there are changes in any of the files that it's watching (check the webpack.config.js) for this. 
         
-        3.  > Open browser and type in : http://localhost:3000
+        3.  > Run **npm run dev** for running the webpack in the watch mode 
+
+        4.  > Open browser and type in : http://localhost:3000
