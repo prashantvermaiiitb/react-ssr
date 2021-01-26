@@ -18,3 +18,4 @@ module.exports = {
         path: __dirname + "/dist" // output path has to be absolute in the new Webpack
     },
 };
+9

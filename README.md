@@ -3,7 +3,7 @@ Server side rendering using React, React  Router, Express, Node.
 
 This project will have separate branches that will be denoting the different stages in which the project will be initiated like :-
 
-1. **express_only** :- 
+1. Branch Name : **express_only** :- 
 
    1. **Initial setup** : for the server JS to serve 'hello world !!'. 
       1. > This will give clarity about the dependencies needed for this and all other files that are needed to make it happen. (Check package json file for this.)
@@ -19,4 +19,11 @@ This project will have separate branches that will be denoting the different sta
       1. For restarting the server again rather than doing that manually. 
       2. Till the time we do not have this integration, manual server re-start is needed for loading the changes on the UI.
 
-2.  
+2.  Running the Project :-
+
+    1.  Open 2 Terminals as below :-
+        1.  > Run **npm run dev** for running the webpack in the watch mode, This will run the webpack in the dev mode with watch flag where it will create **bundle** again if there are changes in any of the files that it's watching (check the webpack.config.js) for this. 
+        
+        2.  > Run **npm run dev** for running the webpack in the watch mode 
+        
+        3.  > Open browser and type in : http://localhost:3000
