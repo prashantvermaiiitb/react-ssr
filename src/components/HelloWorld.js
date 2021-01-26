@@ -24,5 +24,10 @@ const HelloWorld = () => {
 /**
  * This will be needed because this CJS 
  * as we have not included any ES6 import support right now.
+ * CJS module implementation for the module export
+ * If this is being used and require() is used for getting this in the file
+ * Error coming : HelloWorld is not a function()
  */
-module.exports = HelloWorld;
+ // module.exports = HelloWorld;
+
+export default HelloWorld;

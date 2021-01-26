@@ -1,9 +1,14 @@
 /**
  * simple server @Port 3000 to serve 'hello world'
  */
-
 let express = require('express');
-let HelloWorld = require('../components/HelloWorld');
+// let HelloWorld = require('../components/HelloWorld');
+/**
+ * This is to be included as will be getting error that 
+ * HelloWorld is not a function()
+ */
+import HelloWorld from '../components/HelloWorld';
+
 let server = express();
 const PORT = 3000;
 

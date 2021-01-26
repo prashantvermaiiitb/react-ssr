@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prod": "npx webpack --mode=production",
-    "dev": "npx webpack --mode=development -w",
+    "clean": "rimraf ./dist",
+    "dev": "npm run clean && npx webpack --mode=development -w",
+    "prod": "npm run clean && npx webpack --mode=production",
     "server": "nodemon ./dist/server.min.js"
   },
   "repository": {
@@ -21,8 +22,13 @@
   },
   "homepage": "https://github.com/prashantvermaiiitb/react-ssr#readme",
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
     "express": "^4.17.1",
     "nodemon": "^2.0.7",
+    "rimraf": "^3.0.2",
     "webpack": "^5.17.0",
     "webpack-cli": "^4.4.0",
     "webpack-node-externals": "^2.5.2"
