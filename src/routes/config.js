@@ -10,6 +10,18 @@ import HelloWorld from "../components/HelloWorld";
  */
 const config = [
     {
+        path: PATHS.NOTFOUND,
+        status: 404,
+        seo: {
+            title: 'page not found'
+        },
+        generateHtml: function () {
+            let templateGenerator = TemplateFactory.getTemplate(this.path);
+            let html = `<h1>Page Not Found</h1>`, seo = this.seo;
+            return templateGenerator({ html, seo });
+        }
+    },
+    {
         path: PATHS.HELLO_WORLD,
         component: HelloWorld,
         seo: {

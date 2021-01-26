@@ -28,7 +28,7 @@ server.use(express.static('public'));
  */
 server.get(PATHS.HELLO_WORLD_OLD, function (request, response) {
     let html = HelloWorld();
-    response.send(html);
+    response.status(200).send(html);
 });
 
 server.use(router);
