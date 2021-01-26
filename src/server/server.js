@@ -8,6 +8,8 @@ let express = require('express');
  * HelloWorld is not a function()
  */
 import HelloWorld from '../components/HelloWorld';
+import router from '../routes/users';
+import { PATHS } from '../utils/constants';
 
 let server = express();
 const PORT = 3000;
@@ -20,14 +22,16 @@ const PORT = 3000;
 server.use(express.static('public'));
 
 /**
- * for the request at the home page location 
- * serve the "hello world"
+ * Serving the Entire HelloWorld Html for the page.
+ * Here no logic no templating is being used.
+ * This just for demo to show how we can generate and send back the HTML.
  */
-server.get('/', function (request, response) {
+server.get(PATHS.HELLO_WORLD_OLD, function (request, response) {
     let html = HelloWorld();
     response.send(html);
 });
 
+server.use(router);
 /**
  * starting the server at the port 3000
  */

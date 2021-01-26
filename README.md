@@ -22,8 +22,9 @@ This project will have separate branches that will be denoting the different sta
 
    4. **Inclusion of the ES6 Imports**
       1. > npm install --save @babel/core @babel/cli @babel/preset-env : These will help but they will create individual files, here we need this to be used by Webpack, for that we need babel-loader as well so that webpack will be using this loader for transpiling and then doing the bundling.
-      2. Babel CLI will be useful in the package json, for the inclusion of the Babel directly 
-      3. > npm install --save-dev @babel-loader : This will be used in webpack.config.js 
+      2. Babel CLI will be useful in the package json, for the inclusion of the Babel directly.
+      3. .babelrc file will be created for transpiling support 
+      4. > npm install --save-dev @babel-loader : This will be used in webpack.config.js 
 
 2.  Running the Project :-
 
@@ -32,3 +33,11 @@ This project will have separate branches that will be denoting the different sta
         2.  > Run **npm run dev** for running the webpack in the watch mode, This will run the webpack in the dev mode with watch flag where it will create **bundle** again if there are changes in any of the files that it's watching (check the webpack.config.js) for this. 
         3.  > Run **npm run dev** for running the webpack in the watch mode 
         4.  > Open browser and type in : http://localhost:3000
+
+3. Using Router MiddleWare for the Project for decoupling of the routes used in the application
+   1. For that create 'routes' folder and in that we have copies the routes from the server.
+   2. / will be the default route
+   3. /users will be serving userList route
+
+4. Using Axios for making the network calls and loading the data on the server side.
+5. 
