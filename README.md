@@ -38,10 +38,8 @@ This project will have separate branches that will be denoting the different sta
    1. For that create 'routes' folder and in that we have copies the routes from the server.
    2. '/' will be the default route
    3. '/users' will be serving userList route
-   4. '/notfound' will be used for all the other routes not listed
+   4. '/users/:userId/comment' will be serving comments for the User
+   5. '/notfound' will be used for all the other routes not listed
 
 4. Using Axios for making the network calls and loading the data on the server side.
    1. > npm install --save axios : for installing the AXIOS to make the request. 
-   2. 
-
-5. 

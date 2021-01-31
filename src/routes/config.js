@@ -4,8 +4,6 @@ import { PATHS } from "../utils/constants";
 import HelloWorld from "../components/HelloWorld";
 import regeneratorRuntime from "regenerator-runtime"; //needed to save the run-time error for the async/await
 import axios from "axios";
-import { response } from "express";
-import CommentList from "../components/CommentList";
 import PostList from "../components/PostList";
 
 /**
@@ -64,28 +62,18 @@ const config = [
             title: 'post for the user'
         },
         url: (userId) => `https://jsonplaceholder.typicode.com/posts?userId=${userId}`,
-        loadData: async function () {
-            return await axios.get(this.url);
+        loadData: async function (userId) {
+            return await axios.get(this.url(userId));
         },
-        generateHtml: async function () {
-            // console.log(this.loadData());
-            let data = await this.loadData();
+        generateHtml: async function ({ request }) {
+            let data = await this.loadData(request.params.userId || 1);
+            // console.log(data); // @todo including morgan as the logger here
             let templateGenerator = TemplateFactory.getTemplate(this.path);
             let html = this.component(data), seo = this.seo;
             // console.log(html);//@todo use morgan as the logger here
             return templateGenerator({ html, seo });
         }
     },
-    // {
-    //     path: PATHS.POST_FOR_USER,
-    //     component: '',
-    //     seo: {
-    //         title: ''
-    //     }
-    // },
-    //list of all the posts 
-    // {},
-    //comment list for a particular post for a user
     //not found path
     {
         path: PATHS.NOTFOUND,

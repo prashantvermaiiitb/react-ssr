@@ -1,7 +1,5 @@
-import { PATHS } from "../utils/constants";
-
 /**
- * User List 
+ * User List showing the list of the user.
  * @param {*} data : for loading user data after the network
  */
 const UserList = ({ data }) => {
@@ -23,7 +21,7 @@ const UserList = ({ data }) => {
                         <span class="value">${user.email}</span>
                     </li>
                     <li>
-                        <span class="label"><a href="${PATHS.COMMENT_LIST}${user.id}">Comment(s)</a></span>
+                        <span class="label"><a href="/users/${user.id}/posts">Post(s)</a></span>
                     </li>
                 </ul>`
             );
