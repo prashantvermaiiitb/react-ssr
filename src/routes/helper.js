@@ -8,7 +8,9 @@ import { PATHS } from "../utils/constants";
  */
 export const filterRouteConfig = function (request, config) {
     return config.filter((config) => {
-        return config.path == request.url;
+        console.log(request.url);
+        return request.url == config.path; //after comments/user/id this will not work properly
+        // return request.url.indexOf(config.path) !== -1; //regex match is the best option
     }).shift();
 };
 

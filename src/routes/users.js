@@ -4,26 +4,24 @@
  */
 import express from 'express';
 import config from './config';
-import { PATHS, DEFAULT_HTTP_STATUS_CODE } from '../utils/constants';
-import { filterRouteConfig, getPageNotFoundConfig } from './helper';
+import { DEFAULT_HTTP_STATUS_CODE, PATH_CONFIG_KEYS } from '../utils/constants';
 
 let router = express.Router();
 
-
 /**
- * for the request at the home page location 
- * serve the "hello world"
+ * Iterate over the routes and provide the proper route config to the user.
+ * @todo Error handling for the config items that are not having entire information as well.
  */
-router.get(PATHS.DEFAULT, function (request, response) {
-    let routeConfig = filterRouteConfig(request, config);
-    if (!routeConfig) {
-        routeConfig = getPageNotFoundConfig(config);
-    }
-    // console.log(routeConfig);
-    //@todo handling to be done for the unknown paths ?
-    //@todo /userlist ==> what should be the HHTML to be served in this case ?
-    let html = routeConfig.generateHtml();
-    response.status(routeConfig.status || DEFAULT_HTTP_STATUS_CODE).send(html);
-});
+for (var i in config) {
+    let routeConfig = config[i];
+    //@todo should work towards getting proper HTTP method from the routeConfig for this
+    router.get(routeConfig[PATH_CONFIG_KEYS.PATH], async function (request, response) {
+        let html = await routeConfig[PATH_CONFIG_KEYS.GENERATE_HTML]();
+        //@todo what if html is undefined or not proper?
+        response.status(routeConfig[PATH_CONFIG_KEYS.STATUS] || DEFAULT_HTTP_STATUS_CODE).send(html);
+    });
+}
+
+
 
 export default router;
