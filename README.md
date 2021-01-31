@@ -34,12 +34,22 @@ This project will have separate branches that will be denoting the different sta
         3.  > Run **npm run dev** for running the webpack in the watch mode 
         4.  > Open browser and type in : http://localhost:3000
 
-3. Using Router MiddleWare for the Project for decoupling of the routes used in the application
+3. Using **Router** MiddleWare for the Project for decoupling of the routes used in the application
    1. For that create 'routes' folder and in that we have copies the routes from the server.
    2. '/' will be the default route
    3. '/users' will be serving userList route
    4. '/users/:userId/comment' will be serving comments for the User
    5. '/notfound' will be used for all the other routes not listed
 
-4. Using Axios for making the network calls and loading the data on the server side.
+4. Using **Axios** for making the network calls and loading the data on the server side.
    1. > npm install --save axios : for installing the AXIOS to make the request. 
+
+5. Using **Morgan** middleware :-
+   1. > for logging the output on the console in more meaning full format.
+   2. > for logging the output in the file based on the DEV or STAGING or Production environment.
+   3. > for rotating the log files after certain duration of time.
+   4. > will be used as Dev dependency, for logging on the Dev environment
+
+6. 
+
+
