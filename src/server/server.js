@@ -9,11 +9,10 @@ let express = require('express');
  */
 import HelloWorld from '../components/HelloWorld';
 import router from '../routes/users';
-import { PATHS } from '../utils/constants';
+import { PATHS,APP_PORT, LOG_INFO } from '../utils/constants';
 import morgan from 'morgan';
 
 let server = express();
-const PORT = 3000;
 
 /**
  * making the public folder as the static asset serving folder.
@@ -50,17 +49,20 @@ server.get(PATHS.HELLO_WORLD_OLD, function (request, response) {
 // server.use(morgan(':id :method :url :date[iso] :customMsg'));
 // morgan.token('id', (req) => req.id);
 // morgan.token('customMsg', (msg) => msg);
-
-server.use(morgan('combined'));
+// console.log(LOG_INFO);
+server.use(morgan(LOG_INFO));
 
 /**
  * declaring the router for the request/response
  */
 server.use(router);
+
+//demonstrates usage of cross-env package
+// console.log(process.env.NODE_ENV); 
 /**
  * starting the server at the port 3000
  */
-server.listen(PORT, function () {
-    console.log("http://localhost:" + PORT);
+server.listen(APP_PORT, function () {
+    console.log("http://localhost:" + APP_PORT);
 });
 

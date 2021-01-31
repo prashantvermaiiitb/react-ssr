@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
     "morgan": "^1.10.0"
   }
 }

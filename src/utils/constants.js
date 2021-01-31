@@ -1,4 +1,25 @@
 /**
+ * Loading the environment variables based on environment settings in the package-json.
+ */
+import dotenv from 'dotenv';
+dotenv.config();
+
+/**
+ * process.NODE_ENV is being set by default to 'development'
+ * process.NODE_ENV is being set to 'production' because webpack has mode set to 'production'
+ */
+//@todo custom Logger to be setup here in a file.
+// console.log(process.env.NODE_ENV);
+
+const ENV_SUFFIX = process.env[process.env.NODE_ENV];
+// console.log(ENV_SUFFIX);
+
+export const APP_PORT = process.env[`${ENV_SUFFIX}${process.env.PORT_INFO_SUFFIX}`];
+export const LOG_INFO = process.env[`${ENV_SUFFIX}${process.env.LOG_INFO_SUFFIX}`];
+// console.log(APP_PORT);
+
+// console.log('app port based on the environment ',`${process.env.NODE_ENV}_${process.env.PORT_INFO}`);
+/**
  * Paths that will be served using the server side rendering.
  */
 export const PATHS = {

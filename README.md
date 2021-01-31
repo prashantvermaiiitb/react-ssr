@@ -50,6 +50,7 @@ This project will have separate branches that will be denoting the different sta
    3. > for rotating the log files after certain duration of time.
    4. > will be used as Dev dependency, for logging on the Dev environment
 
-6. 
-
-
+6. Using **dot.env** :
+   1. By default the process.env.NODE_ENV has the value of "development"
+   2. It's being set to "production" while being used with mode=production in webpack
+   3. for getting proper environment variables in the code from .env files.
