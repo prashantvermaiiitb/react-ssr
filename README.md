@@ -44,13 +44,15 @@ This project will have separate branches that will be denoting the different sta
 4. Using **Axios** for making the network calls and loading the data on the server side.
    1. > npm install --save axios : for installing the AXIOS to make the request. 
 
-5. Using **Morgan** middleware :-
-   1. > for logging the output on the console in more meaning full format.
-   2. > for logging the output in the file based on the DEV or STAGING or Production environment.
-   3. > for rotating the log files after certain duration of time.
-   4. > will be used as Dev dependency, for logging on the Dev environment
+5.Branch Name : **morgan_express** :- 
 
-6. Using **dot.env** : https://nodejs.dev/learn/how-to-read-environment-variables-from-nodejs
-   1. By default the process.env.NODE_ENV has the value of "development"
-   2. It's being set to "production" while being used with mode=production in webpack
-   3. for getting proper environment variables in the code from .env files.
+   1. Using **Morgan** middleware :-
+      1. > for logging the output on the console in more meaning full format.
+      2. > for logging the output in the file based on the DEV or STAGING or Production environment.
+      3. > for rotating the log files after certain duration of time.
+      4. > will be used as Dev dependency, for logging on the Dev environment
+
+   2. Using **dot.env** : https://nodejs.dev/learn/how-to-read-environment-variables-from-nodejs
+      1. By default the process.env.NODE_ENV has the value of "development"
+      2. It's being set to "production" while being used with mode=production in webpack
+      3. for getting proper environment variables in the code from .env files. 
