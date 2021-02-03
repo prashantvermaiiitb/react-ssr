@@ -30,7 +30,6 @@ export const PATHS = {
     COMMENT_ON_POST: '/posts/:postId/comments',
     ALL_POSTS: '/posts',
     NOTFOUND: '*',
-    // DEFAULT: '*',
 };
 
 /**
