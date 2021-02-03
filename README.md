@@ -56,3 +56,16 @@ This project will have separate branches that will be denoting the different sta
       1. By default the process.env.NODE_ENV has the value of "development"
       2. It's being set to "production" while being used with mode=production in webpack
       3. for getting proper environment variables in the code from .env files. 
+
+6. Branch Name : **react_server_side**
+
+   1. Installing react, react-dom to use the React on the server side. Till we use babel we will be programatically calling React JS.
+      > npm install --save react react-dom
+      (ref. - https://reactjs.org/docs/react-without-jsx.html)
+
+   2. Update the Hello World component to be created using React.createElement() and see the output through ReactDOMServer.renderToString(). 
+
+   3. Installing babel-preset-react to make the React code use JSX for the HTML generation.
+      >npm install @babel-preset-env and update the .babelrc file for this.
+
+   4. 

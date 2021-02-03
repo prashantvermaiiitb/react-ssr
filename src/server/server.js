@@ -1,3 +1,5 @@
+import React from 'react';
+import {renderToString} from 'react-dom/server';
 /**
  * simple server @Port 3000 to serve 'hello world'
  */
@@ -27,7 +29,8 @@ server.use(express.static('public'));
  * This just for demo to show how we can generate and send back the HTML.
  */
 server.get(PATHS.HELLO_WORLD_OLD, function (request, response) {
-    let html = HelloWorld();
+    let type = request.params.type || undefined;
+    let html = renderToString(React.createElement(HelloWorld,{type}));
     response.status(200).send(html);
 });
 

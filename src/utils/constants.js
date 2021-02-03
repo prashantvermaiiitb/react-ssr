@@ -24,7 +24,7 @@ export const LOG_INFO = process.env[`${ENV_SUFFIX}${process.env.LOG_INFO_SUFFIX}
  */
 export const PATHS = {
     HELLO_WORLD: '/',
-    HELLO_WORLD_OLD: '/hello',
+    HELLO_WORLD_OLD: '/hello/(:type)',
     USER_LIST: '/users',
     POST_FOR_USER: '/users/:userId/posts',
     COMMENT_ON_POST: '/posts/:postId/comments',
