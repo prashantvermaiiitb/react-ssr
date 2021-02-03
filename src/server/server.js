@@ -30,7 +30,12 @@ server.use(express.static('public'));
  */
 server.get(PATHS.HELLO_WORLD_OLD, function (request, response) {
     let type = request.params.type || undefined;
-    let html = renderToString(React.createElement(HelloWorld,{type}));
+    
+    // Approach#1 : Using react.createElement
+    // let html = renderToString(React.createElement(HelloWorld,{type}));
+
+    // Approach#2 : Instantiating the Tag
+    let html = renderToString(<HelloWorld type={type}/>);
     response.status(200).send(html);
 });
 

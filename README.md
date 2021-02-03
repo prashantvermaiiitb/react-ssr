@@ -68,4 +68,6 @@ This project will have separate branches that will be denoting the different sta
    3. Installing babel-preset-react to make the React code use JSX for the HTML generation.
       >npm install @babel-preset-env and update the .babelrc file for this.
 
-   4. 
+   4. "HelloWorld" Component will be returned in different formats to show template, JSX, react.createElement().
+
+   5. 
