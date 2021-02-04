@@ -1,5 +1,5 @@
 import React from 'react';
-import {renderToString} from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 /**
  * simple server @Port 3000 to serve 'hello world'
  */
@@ -11,7 +11,7 @@ let express = require('express');
  */
 import HelloWorld from '../components/HelloWorld';
 import router from '../routes/users';
-import { PATHS,APP_PORT, LOG_INFO } from '../utils/constants';
+import { PATHS, APP_PORT, LOG_INFO } from '../utils/constants';
 import morgan from 'morgan';
 
 let server = express();
@@ -30,12 +30,24 @@ server.use(express.static('public'));
  */
 server.get(PATHS.HELLO_WORLD_OLD, function (request, response) {
     let type = request.params.type || undefined;
-    
-    // Approach#1 : Using react.createElement
-    // let html = renderToString(React.createElement(HelloWorld,{type}));
+    let subtype = request.params.subtype || undefined;
+    let html;
 
-    // Approach#2 : Instantiating the Tag
-    let html = renderToString(<HelloWorld type={type}/>);
+    switch (type) {
+        case 1:
+            // Approach#1 : Using react.createElement
+            // http://localhost:3000/hello/1/tmpl
+            // http://localhost:3000/hello/1/jsx
+            // http://localhost:3000/hello/1/react
+            html = renderToString(React.createElement(HelloWorld, { type, subtype }));
+            break;
+        default:
+            // Approach#2 : Instantiating the Tag
+            // http://localhost:3000/hello/2/tmpl
+            // http://localhost:3000/hello/2/jsx
+            // http://localhost:3000/hello/2/react
+            html = renderToString(<HelloWorld type={type} subtype={subtype} />);
+    }
     response.status(200).send(html);
 });
 

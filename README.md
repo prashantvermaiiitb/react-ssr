@@ -70,4 +70,6 @@ This project will have separate branches that will be denoting the different sta
 
    4. "HelloWorld" Component will be returned in different formats to show template, JSX, react.createElement().
 
-   5. 
+   5. Subsequent changes that are happening around the while making the remaining components in react.
+   
+   6. Launching of the browser as you deploy similar to what webpack does

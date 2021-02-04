@@ -1,31 +1,32 @@
+import React from 'react';
 /**
  * User List showing the list of the user.
  * @param {*} data : for loading user data after the network
  */
 const UserList = ({ data }) => {
-    let response = `<h2>No Users Found.</h2>`;
+    let response = <h2>No Users Found.</h2>;
     if (Array.isArray(data) && data.length > 0) {
         response = data.map((user) => {
             return (
-                `<ul class="user-list">
+                <ul className="user-list">
                     <li>
-                        <span class="label">Name: </span>
-                        <span class="value">${user.name}</span>
+                        <span className="label">Name: </span>
+                        <span className="value">{user.name}</span>
                     </li>
                     <li>
-                        <span class="label">UserName: </span>
-                        <span class="value">${user.username}</span>
+                        <span className="label">UserName: </span>
+                        <span className="value">{user.username}</span>
                     </li>
                     <li>
-                        <span class="label">Email: </span>
-                        <span class="value">${user.email}</span>
+                        <span className="label">Email: </span>
+                        <span className="value">{user.email}</span>
                     </li>
                     <li>
-                        <span class="label"><a href="/users/${user.id}/posts">Post(s)</a></span>
+                        <span className="label"><a href={`/users/${user.id}/posts`}>Post(s)</a></span>
                     </li>
-                </ul>`
+                </ul>
             );
-        }).join('');
+        });
     }
     return response;
 }

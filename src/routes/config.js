@@ -1,3 +1,7 @@
+import React, { Component } from 'react';
+import ReactDOMServer from 'react-dom/server';
+
+
 import UserList from "../components/UserList";
 import TemplateFactory from "../templates";
 import { PATHS } from "../utils/constants";
@@ -18,12 +22,12 @@ const config = [
         path: PATHS.HELLO_WORLD,
         component: HelloWorld,
         seo: {
-            title: 'Hello World!!'
+            title: 'Hello World created using React.createElement!!'
         },
         //@todo refactoring needed here 
         generateHtml: async function () {
             let templateGenerator = TemplateFactory.getTemplate(this.path);
-            let html = `<h1>Hello world from Templates !!</h1>`, seo = this.seo;
+            let html = ReactDOMServer.renderToString(React.createElement('h1', null, 'Hello world from Templates created using React.createElement()!!')), seo = this.seo;
             return templateGenerator({ html, seo });
         }
     },
@@ -49,8 +53,8 @@ const config = [
             // console.log(this.loadData());
             let data = await this.loadData();
             let templateGenerator = TemplateFactory.getTemplate(this.path);
-            let html = this.component(data), seo = this.seo;
-            // console.log(html);//@todo use morgan as the logger here
+            let MyComponent = this.component;
+            let html = ReactDOMServer.renderToString(<MyComponent data={data.data} />), seo = this.seo;
             return templateGenerator({ html, seo });
         }
     },
@@ -69,8 +73,8 @@ const config = [
             let data = await this.loadData(request.params.userId || 1);
             // console.log(data); // @todo including morgan as the logger here
             let templateGenerator = TemplateFactory.getTemplate(this.path);
-            let html = this.component(data), seo = this.seo;
-            // console.log(html);//@todo use morgan as the logger here
+            let MyComponent = this.component;
+            let html = ReactDOMServer.renderToString(<MyComponent data={data.data} />), seo = this.seo;
             return templateGenerator({ html, seo });
         }
     },
