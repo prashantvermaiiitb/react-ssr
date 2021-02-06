@@ -46,3 +46,6 @@ export const PATH_CONFIG_KEYS = {
 
 //Default Http status code
 export const DEFAULT_HTTP_STATUS_CODE = 200;
+
+//container Id
+export const APP_ID = 'app';

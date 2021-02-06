@@ -68,8 +68,19 @@ This project will have separate branches that will be denoting the different sta
    3. Installing babel-preset-react to make the React code use JSX for the HTML generation.
       >npm install @babel-preset-env and update the .babelrc file for this.
 
-   4. "HelloWorld" Component will be returned in different formats to show template, JSX, react.createElement().
+   4. "HelloWorld" Component will be returned in different formats to show template, JSX, react.createElement() and this will be checked by passing different parameters in the request URL.
 
-   5. Subsequent changes that are happening around the while making the remaining components in react.
+   5. Subsequent changes to make remaining components in react from the data that's being fetched in server side.
+
+7. Branch Name : **react_client_side**
+
+   1. Creating 2 configurations in the webpack.config.js for the client and server with extra plugins :-
+      1. **DefinePlugin**: for the browser detection vs typeof(window) as an Object and undefined.
+      2. **Spread operator**: this will be used in the react-router for passing thre props.
+   2. Creating Navigation component to be used in all the Components and this will be loading the components whenever link in clicked.
+
+   3. putting server and client JS files in respective folders 
+   4. **server.js** will be in the dist folder because that will be taken and deployed in another machine
+   5. **client.js or bundle.js** will be in the public folder because that's being downloaded in browser and will used for React client side rendering. 
    
    6. Launching of the browser as you deploy similar to what webpack does

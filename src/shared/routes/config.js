@@ -9,6 +9,7 @@ import HelloWorld from "../components/HelloWorld";
 import regeneratorRuntime from "regenerator-runtime"; //needed to save the run-time error for the async/await
 import axios from "axios";
 import PostList from "../components/PostList";
+import NavBar from '../components/NavBar';
 
 /**
  * simple JSON object for the Pages that will tell if there is an extra 
@@ -27,7 +28,7 @@ const config = [
         //@todo refactoring needed here 
         generateHtml: async function () {
             let templateGenerator = TemplateFactory.getTemplate(this.path);
-            let html = ReactDOMServer.renderToString(React.createElement('h1', null, 'Hello world from Templates created using React.createElement()!!')), seo = this.seo;
+            let html = ReactDOMServer.renderToString(<div><NavBar />{React.createElement('h1', null, 'Hello world from Templates created using React.createElement()!!')}</div>), seo = this.seo;
             return templateGenerator({ html, seo });
         }
     },
@@ -54,7 +55,7 @@ const config = [
             let data = await this.loadData();
             let templateGenerator = TemplateFactory.getTemplate(this.path);
             let MyComponent = this.component;
-            let html = ReactDOMServer.renderToString(<MyComponent data={data.data} />), seo = this.seo;
+            let html = ReactDOMServer.renderToString(<div><NavBar /><MyComponent data={data.data} /></div>), seo = this.seo;
             return templateGenerator({ html, seo });
         }
     },
@@ -74,7 +75,7 @@ const config = [
             // console.log(data); // @todo including morgan as the logger here
             let templateGenerator = TemplateFactory.getTemplate(this.path);
             let MyComponent = this.component;
-            let html = ReactDOMServer.renderToString(<MyComponent data={data.data} />), seo = this.seo;
+            let html = ReactDOMServer.renderToString(<div><NavBar /><MyComponent data={data.data} /></div>), seo = this.seo;
             return templateGenerator({ html, seo });
         }
     },
@@ -87,7 +88,7 @@ const config = [
         },
         generateHtml: async function () {
             let templateGenerator = TemplateFactory.getTemplate(this.path);
-            let html = `<h1>Page Not Found</h1>`, seo = this.seo;
+            let html = ReactDOMServer.renderToString(<div><NavBar />{`<h1>Page Not Found</h1>`}</div>), seo = this.seo;
             return templateGenerator({ html, seo });
         }
     },
