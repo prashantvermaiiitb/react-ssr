@@ -6,7 +6,7 @@
  * @todo use Code splitting technique ?
  * @todo using webpack-dev-server for the local development ?
  */
-console.log("__dirname value ", __dirname);
+// console.log("__dirname value ", __dirname);
 var nodeExternals = require('webpack-node-externals');
 module.exports = {
     // watch: true,//will keep on looking for file changes and re-bundle | can
