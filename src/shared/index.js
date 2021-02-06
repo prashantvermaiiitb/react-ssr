@@ -3,6 +3,9 @@ import NavBar from './components/NavBar';
 import { Switch, Route } from 'react-router-dom';
 import { config as routes } from './routes/config';
 
+/**
+ * App component common between server and client
+ */
 const App = () => {
     return (
         <div>

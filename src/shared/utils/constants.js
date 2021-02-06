@@ -1,17 +1,15 @@
-// import dotenv from 'dotenv';
-// dotenv.config();
 
 /**
  * process.NODE_ENV is being set by default to 'development'
  * process.NODE_ENV is being set to 'production' because webpack has mode set to 'production'
  */
 //@todo custom Logger to be setup here in a file.
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 
 // console.log(process.env);
 
 const ENV_SUFFIX = process.env[process.env.NODE_ENV];
-console.log(ENV_SUFFIX);
+// console.log(ENV_SUFFIX);
 
 export const APP_PORT = process.env[`${ENV_SUFFIX}${process.env.PORT_INFO_SUFFIX}`];
 export const LOG_INFO = process.env[`${ENV_SUFFIX}${process.env.LOG_INFO_SUFFIX}`];
@@ -48,3 +46,6 @@ export const DEFAULT_HTTP_STATUS_CODE = 200;
 
 //container Id
 export const APP_ID = 'app';
+
+//key for the initial data for the server and client jS
+export const INITIAL_DATA = 'initial_data';

@@ -10,7 +10,7 @@ let express = require('express');
  * HelloWorld is not a function()
  */
 import HelloWorld from '../shared/components/HelloWorld';
-import router from '../shared/routes/users';
+import router from '../shared/routes/router';
 import { PATHS, APP_PORT, LOG_INFO } from '../shared/utils/constants';
 import morgan from 'morgan';
 import NavBar from '../shared/components/NavBar';

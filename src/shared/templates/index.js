@@ -1,4 +1,5 @@
-import { PATHS, APP_ID } from "../utils/constants";
+import { PATHS, APP_ID, INITIAL_DATA } from "../utils/constants";
+import serializeJavascript from "serialize-javascript";
 
 /**
  * Template factory for getting the proper template object.
@@ -13,7 +14,7 @@ export default class TemplateFactory {
             case PATHS.USER_LIST:
             case PATHS.HELLO_WORLD:
             default:
-                return ({ style, seo, html }) => (
+                return ({ style, seo, html, data }) => (
                     `<html>
                         <head>
                             <title>${seo.title}</title>
@@ -23,12 +24,11 @@ export default class TemplateFactory {
                             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
                             <link href="/assets/styles/style.css" rel="stylesheet">
                             ${style ? `<style>${style}</style>` : ''}
+                            <script>window.${INITIAL_DATA}=${serializeJavascript(data)}</script>
                             <script type="text/javascript" defer src="/assets/js/bundle.min.js"></script>
                         </head>
                         <body>
-                            <div class="container" id="${APP_ID}">
-                                ${html}
-                            </div>
+                            <div class="container" id="${APP_ID}">${html}</div>  
                         </body>
                     </html>`
                 );
