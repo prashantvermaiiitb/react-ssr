@@ -9,10 +9,11 @@ let express = require('express');
  * This is to be included as will be getting error that 
  * HelloWorld is not a function()
  */
-import HelloWorld from '../components/HelloWorld';
-import router from '../routes/users';
-import { PATHS, APP_PORT, LOG_INFO } from '../utils/constants';
+import HelloWorld from '../shared/components/HelloWorld';
+import router from '../shared/routes/users';
+import { PATHS, APP_PORT, LOG_INFO } from '../shared/utils/constants';
 import morgan from 'morgan';
+import NavBar from '../shared/components/NavBar';
 
 let server = express();
 
@@ -29,24 +30,24 @@ server.use(express.static('public'));
  * This just for demo to show how we can generate and send back the HTML.
  */
 server.get(PATHS.HELLO_WORLD_OLD, function (request, response) {
-    let type = request.params.type || undefined;
+    let type = request.params.type || undefined; //by default this will be returned as string
     let subtype = request.params.subtype || undefined;
     let html;
 
     switch (type) {
-        case 1:
+        case '1':
             // Approach#1 : Using react.createElement
             // http://localhost:3000/hello/1/tmpl
             // http://localhost:3000/hello/1/jsx
             // http://localhost:3000/hello/1/react
-            html = renderToString(React.createElement(HelloWorld, { type, subtype }));
+            html = renderToString(<div><NavBar />{React.createElement(HelloWorld, { type, subtype })}</div>);
             break;
         default:
             // Approach#2 : Instantiating the Tag
             // http://localhost:3000/hello/2/tmpl
             // http://localhost:3000/hello/2/jsx
             // http://localhost:3000/hello/2/react
-            html = renderToString(<HelloWorld type={type} subtype={subtype} />);
+            html = renderToString(<div><NavBar /><HelloWorld type={type} subtype={subtype} /></div>);
     }
     response.status(200).send(html);
 });

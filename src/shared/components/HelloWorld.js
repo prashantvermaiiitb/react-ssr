@@ -49,7 +49,7 @@ const HelloWorld = ({ type, subtype }) => {
       rel: "stylesheet"
     })), React.createElement("body", null, React.createElement("div", {
       className: "container" //previously we are using 'class' attribute should be updated now. 
-    }, React.createElement("h1", null, `hello world generated from Express JS using React.createElement(${type}:${subtype})!!`))));
+    }, React.createElement("h1", null, `hello world generated from Express JS using React.createElement(${type || 'no type'}:${subtype || 'no subtype'})!!`))));
   }
 }
 

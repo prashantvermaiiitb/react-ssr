@@ -1,4 +1,4 @@
-import { PATHS } from "../utils/constants";
+import { PATHS, APP_ID } from "../utils/constants";
 
 /**
  * Template factory for getting the proper template object.
@@ -22,9 +22,10 @@ export default class TemplateFactory {
                             <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
                             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
                             <link href="/assets/styles/style.css" rel="stylesheet">
+                            ${style ? `<style>${style}</style>` : ''}
                         </head>
                         <body>
-                            <div class="container">
+                            <div class="container" id="${APP_ID}">
                                 ${html}
                             </div>
                         </body>

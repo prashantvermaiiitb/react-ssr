@@ -16,7 +16,7 @@ const PostList = ({ data }) => {
             </li></ul>;
         }));
     } else {
-        response.push(<div style="margin-left:10px"><h3>No Post for this user found.</h3></div>);
+        response.push(<div style={{ marginLeft: 10 }}><h3>No Post for this user found.</h3></div>);
     }
 
     return response;
