@@ -2,13 +2,20 @@
  * Bundling config information for the file.
  * https://stackoverflow.com/questions/33001237/webpack-not-excluding-node-modules
  * 
- * @todo creation of 2 separate JSON objects for Development and production and using them ?
  * @todo use Code splitting technique ?
  * @todo using webpack-dev-server for the local development ?
  */
+
 // console.log("__dirname value ", __dirname);
 var nodeExternals = require('webpack-node-externals');
 var webpack = require('webpack');
+/**
+ * Loading the environment variables based on environment settings in the package-json.
+ * This has been moved here because we have now client JS also being bundled using the webpack
+ * so it has to know from where the ENV variables have to be read.
+ */
+var dotenv = require('dotenv').config({ path: __dirname + '/.env' });
+
 const serverConfig = {
     // watch: true,//will keep on looking for file changes and re-bundle | can
     // be defined as -w in package json
@@ -31,7 +38,8 @@ const serverConfig = {
     },
     plugins: [
         new webpack.DefinePlugin({ // putting __isBrowser__ in the global namespace
-            __isBrowser__: "false"
+            __isBrowser__: "false",
+            "process.env": dotenv.parsed
         })
     ]
 };
@@ -55,7 +63,8 @@ const clientConfig = {
     },
     plugins: [
         new webpack.DefinePlugin({ // putting __isBrowser__ in the global namespace
-            __isBrowser__: "true"
+            __isBrowser__: "true",
+            "process.env": dotenv.parsed
         })
     ]
 };

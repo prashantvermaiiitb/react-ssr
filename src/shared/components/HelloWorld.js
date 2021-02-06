@@ -27,29 +27,36 @@ const HelloWorld = ({ type, subtype }) => {
         </body>
       </html>
     );
-    default: return React.createElement("html", null, React.createElement("head", null, React.createElement("title", null, "hello world!!!"), React.createElement("link", {
-      rel: "apple-touch-icon",
-      sizes: "180x180",
-      href: "/assets/images/apple-touch-icon.png"
-    }), React.createElement("link", {
-      rel: "icon",
-      type: "image/png",
-      sizes: "32x32",
-      href: "/assets/images/favicon-32x32.png"
-    }), React.createElement("link", {
-      rel: "icon",
-      type: "image/png",
-      sizes: "16x16",
-      href: "/assets/images/favicon-16x16.png"
-    }), React.createElement("meta", {
-      name: "viewport",
-      content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    }), React.createElement("link", {
-      href: "/assets/styles/style.css",
-      rel: "stylesheet"
-    })), React.createElement("body", null, React.createElement("div", {
+    default: return React.createElement("div", {
       className: "container" //previously we are using 'class' attribute should be updated now. 
-    }, React.createElement("h1", null, `hello world generated from Express JS using React.createElement(${type || 'no type'}:${subtype || 'no subtype'})!!`))));
+    }, React.createElement("h1", null, `hello world generated from Express JS using React.createElement(${type || 'no type'}:${subtype || 'no subtype'})!!`));
+
+    // React.createElement("html", null, React.createElement("head", null, React.createElement("title", null, "hello world!!!"), React.createElement("link", {
+    //   rel: "apple-touch-icon",
+    //   sizes: "180x180",
+    //   href: "/assets/images/apple-touch-icon.png"
+    // }), React.createElement("link", {
+    //   rel: "icon",
+    //   type: "image/png",
+    //   sizes: "32x32",
+    //   href: "/assets/images/favicon-32x32.png"
+    // }), React.createElement("link", {
+    //   rel: "icon",
+    //   type: "image/png",
+    //   sizes: "16x16",
+    //   href: "/assets/images/favicon-16x16.png"
+    // }), React.createElement("meta", {
+    //   name: "viewport",
+    //   content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    // }), React.createElement("link", {
+    //   href: "/assets/styles/style.css",
+    //   rel: "stylesheet"
+    // }), React.createElement("script", {
+    //   src: "/assets/js/bundle.min.js",
+    //   type: "text/javascript"
+    // })), React.createElement("body", null, React.createElement("div", {
+    //   className: "container" //previously we are using 'class' attribute should be updated now. 
+    // }, React.createElement("h1", null, `hello world generated from Express JS using React.createElement(${type || 'no type'}:${subtype || 'no subtype'})!!`))));
   }
 }
 

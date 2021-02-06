@@ -23,6 +23,10 @@ let server = express();
  * any other static asset.
  */
 server.use(express.static('public'));
+/**
+ * using morgan for logging the output on the console
+ */
+server.use(morgan(LOG_INFO));
 
 /**
  * Serving the Entire HelloWorld Html for the page.
@@ -53,33 +57,10 @@ server.get(PATHS.HELLO_WORLD_OLD, function (request, response) {
 });
 
 /**
- * using morgan for logging the output on the console
- */
-// server.use(morgan(':method :url :status'));
-// immediate will not log any information for the response
-// server.use(morgan('tiny',{immediate:true}));
-// server.use(morgan('dev'));
-// server.use(morgan.token('type', (req, res) => req.headers['content-type']));
-// server.use(morgan((tokens, req, res) => {
-//     return [
-//       tokens.method(req, res) === 'GET' ? 'GET Method used with :': 'lola',
-//       tokens.url(req, res),
-//       tokens.status(req, res),
-//     ].join(' ');
-//   }));
-// server.use(morgan(':id :method :url :date[iso] :customMsg'));
-// morgan.token('id', (req) => req.id);
-// morgan.token('customMsg', (msg) => msg);
-// console.log(LOG_INFO);
-server.use(morgan(LOG_INFO));
-
-/**
  * declaring the router for the request/response
  */
 server.use(router);
 
-//demonstrates usage of cross-env package
-// console.log(process.env.NODE_ENV); 
 /**
  * starting the server at the port 3000
  */
