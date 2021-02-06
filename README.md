@@ -82,5 +82,6 @@ This project will have separate branches that will be denoting the different sta
    3. putting server and client JS files in respective folders 
    4. **server.js** will be in the dist folder because that will be taken and deployed in another machine
    5. **client.js or bundle.js** will be in the public folder because that's being downloaded in browser and will used for React client side rendering. 
+   6. Installing **react-router-dom** for Client side routing
    
-   6. Launching of the browser as you deploy similar to what webpack does
+   7. Launching of the browser as you deploy similar to what webpack does

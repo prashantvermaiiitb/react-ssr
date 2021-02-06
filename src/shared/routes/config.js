@@ -16,11 +16,12 @@ import NavBar from '../components/NavBar';
  * data that has to be loaded for the Components.
  * @todo "export default config" was giving error. 
  */
-const config = [
+export const config = [
 
     //hello world path
     {
         path: PATHS.HELLO_WORLD,
+        exact: true,
         component: HelloWorld,
         seo: {
             title: 'Hello World created using React.createElement!!'
@@ -35,6 +36,7 @@ const config = [
     //user list path
     {
         path: PATHS.USER_LIST,
+        exact: true, // this will not be added in case of the Express route matching while you have to use this React-router
         component: UserList,
         seo: {
             title: 'User List'
@@ -43,7 +45,7 @@ const config = [
         /**
          * Any method needed for loading the data
          */
-        loadData: async function () {
+        loadData: async function (request) {
             return await axios.get(this.url);
         },
         /**
@@ -67,7 +69,8 @@ const config = [
             title: 'post for the user'
         },
         url: (userId) => `https://jsonplaceholder.typicode.com/posts?userId=${userId}`,
-        loadData: async function (userId) {
+        loadData: async function (request) {
+            let { userId = 1 } = request.params
             return await axios.get(this.url(userId));
         },
         generateHtml: async function ({ request }) {
@@ -82,17 +85,17 @@ const config = [
     //not found path
     {
         path: PATHS.NOTFOUND,
+        component: () => <div><h1>Page Not Found</h1></div>,
         status: 404,
         seo: {
             title: 'page not found'
         },
         generateHtml: async function () {
             let templateGenerator = TemplateFactory.getTemplate(this.path);
-            let html = ReactDOMServer.renderToString(<div><NavBar />{`<h1>Page Not Found</h1>`}</div>), seo = this.seo;
+            let MyComponent = this.component;
+            let html = ReactDOMServer.renderToString(<MyComponent />), seo = this.seo;
             return templateGenerator({ html, seo });
         }
     },
 
 ];
-
-export default config;
