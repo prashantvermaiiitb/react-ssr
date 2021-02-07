@@ -13,7 +13,8 @@ const links = [
     { text: 'Hello World !! (Triangle brackets/template)', to: '/hello/2/tmpl' },
     { text: 'Hello World !! (Triangle brackets/jsx)', to: '/hello/2/jsx' },
     { text: 'Hello World !! (Triangle brackets/react.createElement())', to: '/hello/2/react' },
-    { text: 'Users', to: '/users' }
+    { text: 'Users', to: '/users' },
+    { text: 'Passengers', to: '/passengers' }
 ];
 const NavBar = () => {
     return (
@@ -25,14 +26,6 @@ const NavBar = () => {
                     </li>
                 );
             })}
-            {/* <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/hello/1/tmpl">Hello World !! (react.createElement()/template)</NavLink></li>
-            <li><NavLink to="/hello/1/jsx">Hello World !! (react.createElement()/jsx)</NavLink></li>
-            <li><NavLink to="/hello/1/react">Hello World !! (react.createElement()/react.createElement())</NavLink></li>
-            <li><NavLink to="/hello/2/tmpl">Hello World !! (Triangle brackets/template)</NavLink></li>
-            <li><NavLink to="/hello/2/jsx">Hello World !! (Triangle brackets/jsx)</NavLink></li>
-            <li><NavLink to="/hello/2/react">Hello World !! (Triangle brackets/react.createElement())</NavLink></li>
-            <li><NavLink to="/users">Users</NavLink></li> */}
         </ul>
     );
 }

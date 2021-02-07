@@ -26,6 +26,7 @@ export const PATHS = {
     POST_FOR_USER: '/users/:userId/posts',
     COMMENT_ON_POST: '/posts/:postId/comments',
     ALL_POSTS: '/posts',
+    PASSENGERS:'/passengers',
     NOTFOUND: '*',
 };
 

@@ -22,7 +22,7 @@ router.get('*', async function (request, response, next) {
     const activeRoute = routes.find((route) => {
         return matchPath(request.url, route)
     }) || {};
-    // console.log(activeRoute);
+    console.log(activeRoute);
 
     const templateGenerator = TemplateFactory.getTemplate();
     let { seo, status = DEFAULT_HTTP_STATUS_CODE, data_key } = activeRoute;

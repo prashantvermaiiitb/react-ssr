@@ -5,6 +5,7 @@ import HelloWorld from "../components/HelloWorld";
 import regeneratorRuntime from "regenerator-runtime"; //needed to save the run-time error for the async/await
 import axios from "axios";
 import PostList from "../components/PostList";
+import Passengers from '../components/Passengers';
 
 /**
  * simple JSON object for the Pages that will tell if there is an extra 
@@ -67,6 +68,18 @@ export const config = [
             return await axios.get(url);
         },
         data_key: ({ request, userId = 1 }) => `POST_LIST_${request ? request.params[0].split('/')[2] : userId}`
+    },
+    //List of the Airline Passengers
+    {
+        path: PATHS.PASSENGERS,
+        component: Passengers,
+        loadData: async function ({ page = 1, size = 50 }) {
+            return axios.get(`https://api.instantwebtools.net/v1/passenger?page=${page}&size=${size}`)
+        },
+        seo: {
+            title: 'Airline passenger list'
+        },
+        data_key: ({ page = 1, size = 50 }) => `PASSENGERS_${page}_${size}`
     },
     //not found path
     {
