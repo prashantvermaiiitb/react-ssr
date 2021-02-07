@@ -40,13 +40,13 @@ export const config = [
         seo: {
             title: 'User List'
         },
-        url: 'https://jsonplaceholder.typicode.com/users',
         /**
          * Any method needed for loading the data
          */
-        loadData: async function (request) {
-            return await axios.get(this.url);
+        loadData: async function () {
+            return await axios.get('https://jsonplaceholder.typicode.com/users');
         },
+        data_key: 'USER_LIST'
     },
     //List of All the Posts for a user
     {
@@ -55,11 +55,18 @@ export const config = [
         seo: {
             title: 'post for the user'
         },
-        url: (userId) => `https://jsonplaceholder.typicode.com/posts?userId=${userId}`,
-        loadData: async function (request) {
-            let { userId = 1 } = request.params
-            return await axios.get(this.url(userId));
+        /**
+         * @todo loading of this function has become complicated
+         * @param {*} request 
+         */
+        loadData: async function ({ request, userId = 1 }) {
+            // console.log(request.params[0].split('/')[2]);
+            // console.log(this.url(userId));
+            //@todo why the request.params is not working properly here 
+            let url = `https://jsonplaceholder.typicode.com/posts?userId=${request ? request.params[0].split('/')[2] : userId}`;
+            return await axios.get(url);
         },
+        data_key: ({ request, userId = 1 }) => `POST_LIST_${request ? request.params[0].split('/')[2] : userId}`
     },
     //not found path
     {

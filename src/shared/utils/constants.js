@@ -48,4 +48,4 @@ export const DEFAULT_HTTP_STATUS_CODE = 200;
 export const APP_ID = 'app';
 
 //key for the initial data for the server and client jS
-export const INITIAL_DATA = 'initial_data';
+export const STATE_KEY = 'app';

@@ -25,7 +25,7 @@ router.get('*', async function (request, response, next) {
     // console.log(activeRoute);
 
     const templateGenerator = TemplateFactory.getTemplate();
-    let { seo, status = DEFAULT_HTTP_STATUS_CODE } = activeRoute;
+    let { seo, status = DEFAULT_HTTP_STATUS_CODE, data_key } = activeRoute;
     let html, data = {};
 
     try {
@@ -33,26 +33,31 @@ router.get('*', async function (request, response, next) {
         //     data = await activeRoute.loadData(request).data;
         // }
 
-        let { data = {} } = activeRoute.loadData ? await activeRoute.loadData(request) : {};
+        let { data = {} } = activeRoute.loadData ? await activeRoute.loadData({ request }) : {};
 
         // console.log(data);
-
 
         html = renderToString(
             <StaticRouter location={request.url} context={{ data }}>
                 <App />
             </StaticRouter>
         );
+        let key;
+        if (typeof data_key !== 'function') {
+            key = data_key;
+        } else {
+            key = data_key({ request });
+        }
 
         //for removing the Errors on client end need to pass on the initial data in window.
-        response.status(status || DEFAULT_HTTP_STATUS_CODE).send(templateGenerator({ html, seo, data }));
+        response.status(status || DEFAULT_HTTP_STATUS_CODE).send(templateGenerator({ html, seo, data, data_key: key }));
 
     } catch (e) {
         // console.log(e);
         status = 404;
         html = e.toString();
         seo = 'Error page';
-        response.status(status).send(templateGenerator({ html, seo, data }));
+        response.status(status).send(templateGenerator({ html, seo, data, data_key: 'error_msg' }));
     }
     next();
 });
