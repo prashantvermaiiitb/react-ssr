@@ -27,6 +27,7 @@ export const PATHS = {
     COMMENT_ON_POST: '/posts/:postId/comments',
     ALL_POSTS: '/posts',
     PASSENGERS:'/passengers',
+    REPOS:'/repos/:language?',
     NOTFOUND: '*',
 };
 

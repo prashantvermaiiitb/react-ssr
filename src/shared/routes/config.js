@@ -6,6 +6,8 @@ import regeneratorRuntime from "regenerator-runtime"; //needed to save the run-t
 import axios from "axios";
 import PostList from "../components/PostList";
 import Passengers from '../components/Passengers';
+import { useParams } from 'react-router-dom';
+import Repository from '../components/Repos';
 
 /**
  * simple JSON object for the Pages that will tell if there is an extra 
@@ -82,6 +84,19 @@ export const config = [
         data_key: ({ page = 1, size = 50 }) => `PASSENGERS_${page}_${size}`
     },
     //not found path
+    {
+        path: PATHS.REPOS,
+        component: Repository,
+        seo: {
+            title: 'Popular respositories.'
+        },
+        loadData: async function ({ request, language = 'all' }) {
+            console.log('Load data called for language inside config.. ', language);
+            console.log(request && request.params[0].split('/')[2]);
+            return axios.get(`https://api.github.com/search/repositories?q=stars:%3E1+language:${request ? request.params[0].split('/')[2] : language}&sort=stars&order=desc&type=Repositories`);
+        },
+        data_key: ({ request, language = 'ALL' }) => `LANG_LIST_${(request && request.params[0].split('/')[2]) || language}`
+    },
     {
         path: PATHS.NOTFOUND,
         component: () => <div><h1>Page Not Found</h1></div>,

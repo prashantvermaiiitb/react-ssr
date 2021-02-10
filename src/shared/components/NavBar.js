@@ -14,7 +14,8 @@ const links = [
     { text: 'Hello World !! (Triangle brackets/jsx)', to: '/hello/2/jsx' },
     { text: 'Hello World !! (Triangle brackets/react.createElement())', to: '/hello/2/react' },
     { text: 'Users', to: '/users' },
-    { text: 'Passengers', to: '/passengers' }
+    { text: 'Passengers', to: '/passengers' },
+    { text: 'Repo Home', to: '/repos' }
 ];
 const NavBar = () => {
     return (
