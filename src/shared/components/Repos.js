@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, NavLink, useHistory } from 'react-router-dom';
 import { STATE_KEY } from '../utils/constants';
+import './repo.css';
 /**
  * Component for the respository show-case.
  * Loading the data for the Page.
@@ -56,9 +57,9 @@ const Repository = ({ staticContext, data_key, loadData }) => {
         // will be used on the client end when coming back from the PostList
         // if (!(Array.isArray(repos) && repos.length > 0)) {
         let tmpRepos = window[STATE_KEY][data_key({ language })];
-        console.log(`tmprepository...`, tmpRepos);
-        console.log(`tmprepository...`, typeof (tmpRepos) === 'undefined');
-        console.log(`data to be loaded for inside component ..`, language);
+        // console.log(`tmprepository...`, tmpRepos);
+        // console.log(`tmprepository...`, typeof (tmpRepos) === 'undefined');
+        // console.log(`data to be loaded for inside component ..`, language);
 
         if (!tmpRepos) {
             setLoading(true);// this is being done for Component DidUpdate @todo componentMounted checked 
@@ -100,7 +101,7 @@ const Repository = ({ staticContext, data_key, loadData }) => {
                 <li><NavLink to={'/repos/python'}>Python Repo Home</NavLink></li>
             </ul>
             <button onClick={() => { history.push('/repos/ruby'); }}>See Ruby Repo</button>
-            <table>
+            <table className="mytable">
                 <thead>
                     <tr>
                         <td style={{ width: '10%' }}>Name</td>

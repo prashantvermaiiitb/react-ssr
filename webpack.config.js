@@ -16,6 +16,8 @@ var webpack = require('webpack');
  */
 var dotenv = require('dotenv').config({ path: __dirname + '/.env' });
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const serverConfig = {
     // watch: true,//will keep on looking for file changes and re-bundle | can
     // be defined as -w in package json
@@ -33,10 +35,27 @@ const serverConfig = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_module/,
                 loader: "babel-loader",
+            },
+            /**
+             * * if this is not being written but only in the client 
+             * * then server run will not be possible here.
+             */
+            {
+                test: /\.css$/i,
+                /**
+                 * !css-loader loads the css from import 
+                 * !style-loader does not work alone it has to be used with Css-loader.
+                 * !after this only build is getting created here.
+                 * !this is being written only in the client file.
+                 */
+                // use: [MiniCssExtractPlugin.loader,'css-loader'],
+                use: ['style-loader', 'css-loader'],
+                // use: ['css-loader'],
             }
         ]
     },
     plugins: [
+        new MiniCssExtractPlugin(),
         new webpack.DefinePlugin({ // putting __isBrowser__ in the global namespace
             __isBrowser__: "false",
             "process.env": dotenv.parsed
@@ -58,10 +77,19 @@ const clientConfig = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_module/,
                 loader: "babel-loader",
+            },
+            {
+                test: /\.css$/i,
+                //!style-loader does not work alone it has to be used with Css-loader.
+                //!after this only build is getting created here.
+                //! this is being written only in the client file.
+                // use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                use: ['style-loader', 'css-loader'],
             }
         ]
     },
     plugins: [
+        new MiniCssExtractPlugin(),
         new webpack.DefinePlugin({ // putting __isBrowser__ in the global namespace
             __isBrowser__: "true",
             "process.env": dotenv.parsed

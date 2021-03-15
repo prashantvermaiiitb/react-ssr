@@ -84,4 +84,13 @@ This project will have separate branches that will be denoting the different sta
    5. **client.js or bundle.js** will be in the public folder because that's being downloaded in browser and will used for React client side rendering. 
    6. Installing **react-router-dom** for Client side routing
    
-   7. Launching of the browser as you deploy similar to what webpack does
+   7. Using style-loader for loading the styles from the .css files, 
+      1. By doing https://webpack.js.org/loaders/style-loader/#root
+      2. We can import style in the component import './hello.css'
+      3. This will help in putting the CSS in the generated source code, with
+         error for having the proper loader for understanding that because
+         minified is the JS file and styles should be put <style> tag.
+      4. 
+
+
+   8. Launching of the browser as you deploy similar to what webpack does
